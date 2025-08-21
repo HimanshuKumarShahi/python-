@@ -1,6 +1,6 @@
-import os
+# import os
 # from first import *
-# print("hello world");
+print("hello world");
 
 # print("Enter a");
 # a=int(input());
@@ -12,7 +12,7 @@ import os
 #     print("sum=",a +b);
 
 # sum(455,48);
-
+ 
 # for c in "hello_world":
 #     print(c);
 
@@ -22,4 +22,4 @@ import os
 #         print("even number",i)
 #     else:
 #         print("odd number",i)
-os.getcwd();
+# os.getcwd();
