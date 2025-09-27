@@ -1,5 +1,6 @@
 import math
 import random
+# from decimal import Decimal
 x=2
 y=3
 z=4
@@ -61,3 +62,16 @@ z=4
 # random.shuffle(l1)
 # print(l1)
 
+# print(0.1+0.1+0.4)
+# print(0.1+0.1+0.1- 0.3)
+# print(Decimal('0.1')+Decimal('0.1')+Decimal('0.1')-Decimal('0.3'))
+
+# setone={1,2,3,4}
+# print(setone-{1,2,3,4})
+# print(setone & {1,3})
+# print(setone | {1,3})
+
+# print(True==1)
+# print(False==0)
+# print(False is 0)
+# print(True is 1)
