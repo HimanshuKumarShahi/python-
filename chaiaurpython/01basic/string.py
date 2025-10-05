@@ -100,3 +100,10 @@ chai_types={"masala":"spicy","ginger":"zesty","green":"mild"}
 # print(squared_num) 
 # squared_num.clear()
 # print(squared_num) 
+
+keys=["masala","ginger","lemon"]
+default_val="yummy"
+new_dict=dict.fromkeys(keys,default_val)
+print(new_dict)
+new_dict=dict.fromkeys(keys,keys)
+print(new_dict) 
