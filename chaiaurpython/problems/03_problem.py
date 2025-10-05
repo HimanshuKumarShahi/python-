@@ -1,8 +1,11 @@
 # grade calculator
 name=str(input("Please Enter Student Name: \n"))
 score=int(input("Print Enter Student Score: \n"))
-grade=str(input("assign GRADE in captial letter b/w A to E "))
+if(score>=101):
+    print("Please enter score b/w 1 to 100")
+    exit()
 
+grade=str(input("assign GRADE in captial letter b/w A to E "))
 if(grade=="A"):
     print("Student Name:",name)
     print("Student Score:",score)
