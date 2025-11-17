@@ -2,7 +2,7 @@ from tkinter import *
 
 window = Tk()
 window.title("Food Court")
-window.geometry("1500x800")
+window.geometry("1500x900")
 window.configure(bg="#ff7700")
 window.resizable(width=False,height=False)
 
@@ -10,10 +10,6 @@ window.resizable(width=False,height=False)
 
 navbar = Frame(window, bg="#1a1a1a", height=80)
 navbar.pack(fill="both", pady=10)
-
-content_frame = Frame(window, bg="#d7d7d7",height=790)
-content_frame.pack(fill="both", padx=5, pady=10)
-
 
 title_label = Label(
     navbar,
@@ -74,71 +70,76 @@ contact_btn.pack(padx=30, pady=20)
 contact_btn.place(x=1200,y=22)
 
 
+# navbar = Frame(window, bg="#1a1a1a", height=80)
+# navbar.pack(fill="both", pady=10)
 
+Content_frame=Frame(window,bg="#212121",height=750)
+Content_frame.pack(fill="both",padx=3,pady=2)
 
-# def show_home():
-#     # Clear previous content
-#     for widget in content_frame.winfo_children():
-#         widget.destroy()
-    
-#     # Home page content
-#     home_title = Label(
-#         content_frame,
-#         text="Welcome to FoodCourtX",
-#         font=("Arial", 24, "bold"),
-#         bg="#f5f5f5",
-#         fg="#333"
-#     )
-#     home_title.pack(pady=20)
-    
-#     welcome_text = Label(
-#         content_frame,
-#         text="Browse our menu and place your order for quick delivery!",
-#         font=("Arial", 14),
-#         bg="#f5f5f5",
-#         fg="#666",
-#         wraplength=600
-#     )
-#     welcome_text.pack(pady=10)
+Label(Content_frame,text="Your one-stop destination for delicious meals from a variety of stalls.\n"
+        "Enjoy fast delivery, great taste, and excellent service.\n"
+        "Order now and satisfy your cravings!",
+        font=("Arial", 25),
+    bg="#ff7700",
+    fg="#0A0909",
+    pady=100,
+    padx=40,
+    justify="center"
+).pack(fill="both")
 
-# def show_menu():
-#     for widget in content_frame.winfo_children():
-#         widget.destroy()
-    
-#     menu_title = Label(
-#         content_frame,
-#         text="Our Menu",
-#         font=("Arial", 24, "bold"),
-#         bg="#f5f5f5",
-#         fg="#333"
-#     )
-#     menu_title.pack(pady=20)
-    
-#     # Sample menu items
-#     items = ["Pizza - ₹199", "Burger - ₹99", "Pasta - ₹149"]
-#     for item in items:
-#         Label(content_frame, text=item, font=("Arial", 12), bg="#f5f5f5").pack(anchor="w")
+Item_frame = Frame(Content_frame, bg="white", padx=20, pady=20, bd=2, relief="ridge")
+Item_frame.pack(padx=80, pady=40)
 
-# def show_order():
-#     for widget in content_frame.winfo_children():
-#         widget.destroy()
-    
-#     order_title = Label(
-#         content_frame,
-#         text="Place Your Order",
-#         font=("Arial", 24, "bold"),
-#         bg="#f5f5f5",
-#         fg="#333"
-#     )
-#     order_title.pack(pady=20)
-    
-#     # Simple order form
-#     name_label = Label(content_frame, text="Name:", font=("Arial", 12), bg="#f5f5f5")
-#     name_entry = Entry(content_frame, font=("Arial", 12), width=30)
-#     name_label.pack(pady=5)
-#     name_entry.pack(pady=5)
+most_liked = Label(
+    Item_frame,
+    text="Most Liked",
+    bg="#02a2ff",
+    fg="black",
+    font=("Arial", 9, "bold"),
+    padx=2,
+    pady=5
+)
+most_liked.pack(anchor="n", pady=(8, 15))
 
-# # Show home page by default
-# show_home()
+image_placeholder = Label(
+    Item_frame,
+    text="[Image here]",
+    bg="#ddd",
+    fg="#666",
+    font=("Arial", 14),
+    width=25,
+    height=8
+)
+name_label = Label(
+    Item_frame,
+    text="Delicious Pizza",
+    font=("Arial", 20, "bold"),
+    bg="white",
+    fg="#333",
+    pady=10
+)
+name_label.pack()
+
+price_label = Label(
+    Item_frame,
+    text="Price: ₹199",
+    font=("Arial", 16),
+    bg="white",
+    fg="#ff6600"
+)
+price_label.pack()
+desc_label = Label(
+    Item_frame,
+    text="A crispy thin crust topped with fresh mozzarella, basil, and tomatoes.",
+    font=("Arial", 12),
+    bg="white",
+    fg="#555",
+    wraplength=300,
+    pady=15,
+    padx=10,
+    justify="center"
+)
+desc_label.pack()
+
 
 window.mainloop()
