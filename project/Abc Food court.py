@@ -47,7 +47,7 @@ def cal():
     bill_text.insert(END, f"Total Amount: ₹{total}")
 
 def print_bill():
-    Label(window,text="Printing Successfully",bg='green',font=('arial',20,'bold')).place(x=750,y=430)
+    Label(window,text="!! Printing Successfully !!",bg='green',font=('arial',15)).place(x=770,y=500)
 
 # Head Frame
 f1 = Frame(window, width=1200, height=80, bg="#2284c5")
