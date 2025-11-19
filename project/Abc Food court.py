@@ -34,36 +34,48 @@ def cal():
     total = c1 + c2 + c3
     tbil.set(f"₹ {total}")
 
-    # bill_text
+    # Format bill text with tabs for alignment
     bill_text.delete("1.0", END)
-    bill_text.insert(END, "Item________Qty________Price\n")
+    bill_text.insert(END, "Item\t\tQty\tPrice\n")
+    bill_text.insert(END, "-" * 30 + "\n")
     if v1 > 0:
-        bill_text.insert(END, f"Dosa________{v1}________₹{c1}\n")
+        bill_text.insert(END, f"Dosa\t\t{v1}\t₹{c1}\n")
     if v2 > 0:
-        bill_text.insert(END, f"Burger________{v2}________₹{c2}\n")
+        bill_text.insert(END, f"Burger\t\t{v2}\t₹{c2}\n")
     if v3 > 0:
-        bill_text.insert(END, f"Gulab Jamun______{v3}______₹{c3}\n")
+        bill_text.insert(END, f"Gulab Jamun\t{v3}\t₹{c3}\n")
     bill_text.insert(END, "\n")
-    bill_text.insert(END, f"Total Amount: ₹{total}")
+    bill_text.insert(END, f"Total Amount:\t\t₹{total}")
 
 def print_bill():
-    Label(window,text="!! Printing Successfully !!",bg='green',font=('arial',15)).place(x=770,y=500)
+    # Remove previous message if any
+    for widget in window.place_slaves():
+        if widget.winfo_class() == 'Label' and widget.cget("text").startswith("!!"):
+            widget.destroy()
+    Label(window, text="!! Printing Successfully !!", bg='green', font=('arial', 15, 'bold')).place(x=780, y=570)
 
-# Head Frame
+# Frame 1 - Header
 f1 = Frame(window, width=1200, height=80, bg="#2284c5")
 f1.pack(fill=X)
 Label(f1, text='ABC Food Court', font=('arial', 25, 'bold'), bg='#2284c5', fg="white").place(x=450, y=24)
 
-# Menu Frame 
-f2 = Frame(window, width=350, height=600, bg='lightpink')
+# Frame2 - Menu Card
+f2 = Frame(window, width=350, height=600, bg='lightpink', bd=2, relief='ridge')
 f2.place(x=20, y=90)
-Label(f2, text='Menu Card', font=('arial', 16, 'bold'), bg='lightpink').place(x=100, y=20)
-Label(f2, text='Dosa--------------@120 Rs.', font=('arial', 12), bg='lightpink').place(x=30, y=80)
-Label(f2, text='Burger------------@ 50 Rs.', font=('arial', 12), bg='lightpink').place(x=30, y=120)
-Label(f2, text='Gulab Jamun-------@ 20 Rs.', font=('arial', 12), bg='lightpink').place(x=30, y=160)
 
-# Order input Frame 
-f3 = Frame(window, width=350, height=600, bg='lightpink')
+Label(f2, text='Menu Card', font=('arial', 16, 'bold'), bg='lightpink').place(x=120, y=20)
+
+menu_items = [
+    ("Dosa", 120, 80),
+    ("Burger", 50, 120),
+    ("Gulab Jamun", 20, 160),
+]
+
+for item, price, y_pos in menu_items:
+    Label(f2, text=f'{item}{"."*(30-len(item))}@ ₹{price}', font=('arial', 12), bg='lightpink').place(x=30, y=y_pos)
+
+# Frame3 - Order Input
+f3 = Frame(window, width=350, height=600, bg='lightpink', bd=2, relief='ridge')
 f3.place(x=400, y=90)
 Label(f3, text='Order Here', font=('arial', 16, 'bold'), bg='lightpink').place(x=120, y=20)
 
@@ -87,20 +99,19 @@ gJamun_Entry.place(x=150, y=160)
 Button(f3, text='Calculate', width=12, command=cal).place(x=50, y=220)
 Button(f3, text='Reset', width=12, command=res).place(x=170, y=220)
 
-# Bill Frame 
-f4 = Frame(window, width=350, height=600, bg='lightpink')
+# Frame4 - Bill Area
+f4 = Frame(window, width=350, height=600, bg='lightpink', bd=2, relief='ridge')
 f4.place(x=780, y=90)
 
 Label(f4, text='Bill Area', font=('arial', 16, 'bold'), bg='lightpink').place(x=125, y=20)
 
 Label(f4, text='Total Bill:', font=('arial', 14), bg='lightpink').place(x=30, y=80)
-
 entry_total = Entry(f4, font=('arial', 14), textvariable=tbil, width=15, state='readonly')
 entry_total.place(x=130, y=80)
 
 bill_text = Text(f4, width=30, height=15, font=('arial', 12))
 bill_text.place(x=20, y=130)
 
-Button(f4, text='Print Bill',font=("arial",10,"bold"), width=10, command=print_bill,padx=20,pady=10).place(x=100, y=460)
+Button(f4, text='Print Bill', font=("arial", 10, "bold"), width=10, command=print_bill, padx=20, pady=10).place(x=100, y=530)
 
 window.mainloop()
