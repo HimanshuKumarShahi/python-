@@ -78,21 +78,6 @@ menu_items = [
     ("Dosa", 120, 80),
     ("Burger", 50, 120),
     ("Gulab Jamun", 20, 160),
-    ("Idli Sambar", 60, 200),
-    ("Vada Pav", 40, 240),
-    ("Pav Bhaji", 80, 280),
-    ("Samosa", 25, 320),
-    ("Chole Bhature", 90, 360),
-    ("Fried Rice", 100, 400),
-    ("Noodles", 90, 440),
-    ("Paneer Sandwich", 70, 480),
-    ("Veg Puff", 30, 520),
-    ("Masala Maggi", 50, 560),
-    ("Cold Coffee", 60, 600),
-    ("Lemon Soda", 30, 640),
-    ("Masala Tea", 20, 680),
-    ("Ice Cream Cup", 40, 720),
-    ("French Fries", 60, 760),
 ]
 
 for item, price, y_pos in menu_items:
