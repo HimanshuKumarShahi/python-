@@ -1,5 +1,7 @@
 from tkinter import *
-
+from tkinter import messagebox
+from datetime import datetime
+import os
 
 window = Tk()
 window.title("ABC Food Court")
@@ -52,12 +54,29 @@ def cal():
 
 
 def print_bill():
+    # Get current bill text
+    text_bill = bill_text.get("1.0", END).strip()
+    if not text_bill:
+        messagebox.showwarning("Warning", "No bill to save. Please calculate first.")
+        return
+
+    # Create folder and filename
+    os.makedirs("bills", exist_ok=True)
+    filename = datetime.now().strftime("bills/bill_%Y%m%d.txt")
+
+    # Append bill to text file
+    with open(filename, "a", encoding="utf-8") as f:
+        f.write("\n==============================\n")
+        f.write(datetime.now().strftime("Date: %Y-%m-%d  Time: %H:%M:%S\n"))
+        f.write(text_bill + "\n")
+
     # Remove previous message label if any
     for widget in window.place_slaves():
         if isinstance(widget, Label) and str(widget.cget("text")).startswith("!!"):
             widget.destroy()
-    Label(window, text="!! Printing Successfully !!",
-          bg='green', font=('arial', 15, 'bold')).place(x=780, y=570)
+
+    Label(window, text="!! Printing & Saved to TXT !!",
+          bg='green', font=('arial', 15, 'bold')).place(x=730, y=570)
 
 
 # Frame 1 - Header
