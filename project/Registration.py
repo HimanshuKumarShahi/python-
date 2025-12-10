@@ -47,7 +47,7 @@ def submit():
     mydb = mycon.connect(
         host="localhost",
         user="root",
-        password="Password😠",
+        password="Enter your password......",
         database="registration"
     )
     cursor = mydb.cursor()
